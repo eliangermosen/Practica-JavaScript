@@ -11,6 +11,9 @@
 <body>
     <h1>Fundamentos JavaScript</h1>
     <script>
+
+        /*CAP 3. Variables: var VS let*/
+
         var hola = "Hola Mundo"; //var : la variable se hace global 
         let hello = "Hello World"; // let : variable de ambito de bloque
         //var es una mala practica de declaracion de variables
@@ -46,6 +49,8 @@
             console.log("variable musica dentro del bloque:", musica2);
         }
         console.log("variable musica despues de bloque:", musica2);
+
+        /*CAP 4. Constantes (const)*/
 
         /*const : se debe utilizar cuando las variables no 
         vayan a cambiar su valor durante el flujo de la 
@@ -85,6 +90,9 @@
         console.log(objeto);
         console.log(colores);
 
+
+        /*CAP  5. Cadenas de Texto (Strings)*/
+
         //CADENAS DE TEXTO STRING
 
         let nombre = "Elian Manuel";
@@ -112,6 +120,8 @@
             lorem.split(" "),
             lorem.split(",")
         );
+
+        /*CAP 6. Template Strings*/
 
         //Concatenacion
         /*let nombre = "Elian";
@@ -148,6 +158,7 @@
         console.log(ul3);
 
 
+        /*CAP 7. Números (Numbers)*/
 
         //Numbers
 
@@ -169,6 +180,7 @@
         console.log(numc + Number.parseInt(numd));
         console.log(numc + Number.parseFloat(numd));
 
+        /*CAP 8. Booleans*/
 
         //Booleans 
 
@@ -187,6 +199,7 @@
 
 
 
+        /*CAP 9. undefined, null & NaN*/
 
         //undefined, null & NaN
 
@@ -203,6 +216,9 @@
         /*NaN - Not a Number*/
         let noEsUnNumero = "hola" * 3.7;
         console.log(noEsUnNumero);
+
+
+
 
     </script>
 </body>
