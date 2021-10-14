@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos JavaScript</title>
+</head>
+
+<body>
+    <h1>Fundamentos JavaScript</h1>
+    <script>
+        var hola = "Hola Mundo"; //var : la variable se hace global 
+        let hello = "Hello World"; // let : variable de ambito de bloque
+        //var es una mala practica de declaracion de variables
+        //let buena practica de declaracion de variables
+        console.log(hola);
+        console.log(hello);
+        console.log(window);
+        console.log(window.hola);
+        console.log(window.hello);
+
+        //ambito de bloque
+        //esto es un bloque - comentario de una linea
+        /*esto es un comentario 
+        de varias lineas*/
+
+        //VAR
+        console.log("*******var*******");
+        var musica = "Rock";
+        console.log("variable musica antes de bloque:", musica);
+        {
+            var musica = "POP";
+            console.log("variable musica dentro del bloque:", musica);
+        }
+        console.log("variable musica despues de bloque:", musica);
+
+        //LET
+        //2
+        console.log("*******let*******");
+        let musica2 = "Rock";
+        console.log("variable musica antes de bloque:", musica2);
+        {
+            let musica2 = "POP";
+            console.log("variable musica dentro del bloque:", musica2);
+        }
+        console.log("variable musica despues de bloque:", musica2);
+    </script>
+</body>
+
+</html>
