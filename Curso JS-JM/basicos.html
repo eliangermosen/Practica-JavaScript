@@ -85,6 +85,34 @@
         console.log(objeto);
         console.log(colores);
 
+        //CADENAS DE TEXTO STRING
+
+        let nombre = "Elian Manuel";
+        let apellido = 'Germosen';
+        let saludo = new String("Hola Mundo");
+        let lorem = "    Lorem ipsum amet     ";
+
+        console.log(nombre, apellido, saludo);
+        //propiedad .length
+        console.log(
+            nombre.length,
+            apellido.length,
+            saludo.length
+        );
+
+        //metodo
+        console.log(
+            nombre.toUpperCase(),
+            apellido.toLowerCase(),
+            saludo.toUpperCase(),
+            lorem.includes("amet"),
+            lorem.includes("yo"),
+            lorem,
+            lorem.trim(),
+            lorem.split(" "),
+            lorem.split(",")
+        );
+
     </script>
 </body>
 
