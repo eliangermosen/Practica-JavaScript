@@ -46,6 +46,45 @@
             console.log("variable musica dentro del bloque:", musica2);
         }
         console.log("variable musica despues de bloque:", musica2);
+
+        /*const : se debe utilizar cuando las variables no 
+        vayan a cambiar su valor durante el flujo de la 
+        aplicacion
+        */
+        let a;
+        const PI = 3.1416;
+        //const NUEVE;
+        console.log(PI);
+        //PI = 3.15;
+
+        a = "emtg";
+        console.log(a);
+
+        //objeto
+        const objeto = {
+            nombre: "Elian",
+            edad: 19
+        }
+
+        /*
+        UNICA MANERA DE QUE UNA CONST CAMBIE DEBIDO A QUE
+        los objetos o arreglos son valores compuestos y solo se 
+        accede a su propiedad.
+        */
+
+        //arreglos
+        const colores = ["azul", "negro", "blanco", "rojo"];
+
+        console.log(objeto);
+        console.log(colores);
+
+        //agregando a valores a sus propiedades
+        objeto.correo = "elianmtoribio@gmail.com";
+        colores.push("amarillo");
+
+        console.log(objeto);
+        console.log(colores);
+
     </script>
 </body>
 
