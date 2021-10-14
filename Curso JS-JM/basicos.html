@@ -234,6 +234,61 @@
         retorno.
         */
 
+        //Declaracion de Funcion
+
+        function estoEsUnaFuncion() {
+            console.log("Uno");
+            console.log("Dos");
+            console.log("Tres");
+        }
+        //Invocacion de funcion
+        estoEsUnaFuncion();
+
+
+        function UnaFuncionQueDevuelveValor() {
+            console.log("Uno");
+            return 19;
+            console.log("Dos");
+            console.log("Tres");
+            return "La funcion ha retornado una cadena de texto";
+        }
+
+        let valorDeFuncion = UnaFuncionQueDevuelveValor();
+
+        console.log(valorDeFuncion);
+
+        function saluda(alias = "Desconocido", edad = 0) {
+            console.log(`Hola mi alias es ${alias} y tengo ${edad} a*os de edad.`);
+        }
+
+        saluda("manuel", 10);
+        saluda();
+
+        //Funciones Declarada Vs Funciones expresadas
+
+        funcionDeclarada();
+
+        function funcionDeclarada() {
+            console.log("Esto es una funcion declarada y puede invocarse en cualquier partde de nustro codigo, incluso antes de que la funcion sea declarada.");
+        }
+
+        funcionDeclarada();
+
+        /*
+        Las funciones expresadas deben ser inicializadas
+        con const y no es necesario a la funcion ponerle nombre
+        si no mas bien a la variable, patron muy utilizado.
+        Funcion anonima.
+        */
+
+        /*funcionExpresada();*/
+
+        const funcionExpresada = function () {
+            console.log("Esto es una funcion Expresada, es decir una funcion que se le ha asignado como valor a una variable, si invocamos esta funcion antes de su defincion, javascript nos dira. 'Uncaught ReferenceError: Cannot access 'funcionExpresada' before initialization' ");
+        }
+
+        funcionExpresada();
+
     </script>
 </body>
 
