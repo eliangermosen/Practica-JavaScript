@@ -328,6 +328,58 @@
             console.log(`<li id="${index}">${el}</li>`);
         })
 
+        /*CAP 12. Objetos */
+        //es muy recomendable e importante utilizar const con los objetos
+        const ob = {
+        };
+        console.log(ob);
+
+        //deprecado ya no se utiliza
+        const obf = new Object();
+        console.log(obf);
+
+        /* dentro de un objeto a las variables se le van 
+        a llamar atributos/propiedades y a las funciones 
+        se les llama métodos */
+        const eli = {
+            nombres: "Elian Manuel",
+            apellidos: "Toribio Germosen",
+            edad: 20,
+            hobbies: ["nba", "mlb", "estudiar"],
+            usa: false,
+            contacto: {
+                email: "elianmtoribio@gmail.com",
+                twitter: "@elianmtg",
+                movil: 8098645390
+            },
+            saludar: function () {
+                console.log("Hola :)")
+            },
+            decirMiNombre: function () {
+                //this hace referencia al mismo objeto
+                console.log(`hola me llamo ${this.nombres} ${this.apellidos} y tengo ${this.edad} aÑos, me puedes sefuir como ${this.contacto.twitter} en twitter.`)
+            }
+        }
+
+        console.log(eli);
+        console.log(eli["nombres"]);//acceder a una propiedad en especifico del objeto
+        console.log(eli["apellidos"]);
+        console.log(eli.nombres);
+        console.log(eli.apellidos);
+        console.log(eli.edad);
+        console.log(eli.usa);
+        console.log(eli.hobbies);
+        console.log(eli.hobbies[2]);
+        console.log(eli.contacto);
+        console.log(eli.contacto.twitter);
+        eli.saludar();
+        eli.decirMiNombre();
+
+        console.log(Object.keys(eli))//keys lista todas las llaves del objeto
+        console.log(Object.values(eli))//values forma arreglo con valores del obejto
+        console.log(eli.hasOwnProperty("nombres"))//hasOwnProperty permite saber si un objeto tiene una propiedad
+        console.log(eli.hasOwnProperty("nacimiento"))
+
     </script>
 </body>
 
