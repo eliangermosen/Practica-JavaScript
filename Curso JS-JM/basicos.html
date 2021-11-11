@@ -289,6 +289,45 @@
 
         funcionExpresada();
 
+        /*CAP 11. Arreglos (Arrays)*/
+
+        //pueden ser definidos tanto con let como con const
+        const arr = [];
+        const b = [1, true, "hola", ["a", "b", "c", [1, 2, 3]]];
+        console.log(arr);
+        console.log(b);//imprime todo el contenido del arreglo
+        console.log(b.length);//imprime la longitud del arreglo
+        console.log(b[2]);
+        console.log(b[0]);
+        console.log(b[3]);//imprime en especifico la posicion n del arreglo
+        console.log(b[3][2]);
+        console.log(b[3][3][2]);
+
+        const c = Array.of("x", "y", "z", 9, 8, 7);//otra manera de crear arreglo
+        console.log(c);
+
+        const d = Array(100).fill(false);
+        console.log(d);
+
+        //forma anticuada ya no se utiliza
+        // const e = new Array();
+        // console.log(e);
+        // const fa = new Array(1, 2, 3, true, false);
+        // console.log(fa);
+
+        const colors = ["rojo", "verde", "azul"]
+        console.log(colors);
+
+        colors.push("negro");//push agrega datos al final del arreglo
+        console.log(colors);
+
+        colors.pop();//pop elimina el ultimo elemento del arreglo
+        console.log(colors);
+
+        colors.forEach(function (el, index) {
+            console.log(`<li id="${index}">${el}</li>`);
+        })
+
     </script>
 </body>
 
