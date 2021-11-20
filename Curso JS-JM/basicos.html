@@ -456,6 +456,116 @@
         console.log((9 === 9) || ("9" === 9));
         console.log((9 === 9) && ("9" === 9));
 
+        /*CAP 14. Condicionales  */
+
+        /* if - else */
+
+        let edad = 17;
+
+        if (edad > 17) {
+            console.log("Eres mayor de edad.")
+        } else {
+            console.log("Eres menor de edad.")
+        }
+
+        if (edad >= 18) {
+            console.log("Eres mayor de edad.")
+        } else {
+            console.log("Eres menor de edad.")
+        }
+
+        if (edad < 18) {
+            console.log("Eres menor de edad.")
+        } else {
+            console.log("Eres mayor de edad.")
+        }
+
+        if (edad <= 17) {
+            console.log("Eres menor de edad.")
+        } else {
+            console.log("Eres mayor de edad.")
+        }
+
+        /* if - else if - else */
+        /*
+        Déjame Dormir - 0hrs - 5hrs
+        Buenos dias 6hrs - 11hrs
+        Buenas tardes 12hrs - 18hrs
+        Buenas noches 19hrs - 23hrs
+        */
+
+        let hora = 23;
+
+        if (hora >= 0 && hora <= 5) {
+            console.log("Déjame Dormir.")
+        } else if (hora >= 6 && hora <= 11) {
+            console.log("Buenos dias.")
+        } else if (hora >= 12 && hora <= 18) {
+            console.log("Buenas tardes.")
+        } else {
+            console.log("Buenas noches.")
+        }
+
+        if (hora < 6) {
+            console.log("Déjame Dormir.")
+        } else if (hora > 5 && hora < 12) {
+            console.log("Buenos dias.")
+        } else if (hora > 11 && hora < 19) {
+            console.log("Buenas tardes.")
+        } else {
+            console.log("Buenas noches.")
+        }
+
+        /* Operador Ternario (condición) ? verdadero : falsa */
+
+        console.log("OPERADOR TERNARIO.");
+
+        let eresMayor = (edad >= 18) //condición
+            ? "Eres Mayor de edad." //true
+            : "Eres Menor de edad."; //false
+        console.log(eresMayor);
+
+        /* switch - case */
+
+        /*
+        domingo -0
+        lunes - 1
+        martes - 2
+        miércoles - 3
+        jueves - 4
+        viernes - 5
+        sábado - 6
+        */
+
+        let dia = 2;
+
+        switch (dia) {
+            case 0:
+                console.log("Domingo.");
+                break;//hace que se salga del switch una vez cumplido algun caso
+            case 1:
+                console.log("Lunes.");
+                break;
+            case 2:
+                console.log("Martes.");
+                break;
+            case 3:
+                console.log("Miercoles.");
+                break;
+            case 4:
+                console.log("Jueves.");
+                break;
+            case 5:
+                console.log("Viernes.");
+                break;
+            case 6:
+                console.log("Sabado.");
+                break;
+            default:
+                console.log("El dia no existe.");
+                break;
+        }
+
 
     </script>
 </body>
