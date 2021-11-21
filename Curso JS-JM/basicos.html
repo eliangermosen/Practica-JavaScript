@@ -566,6 +566,77 @@
                 break;
         }
 
+        /* CAP 15. Ciclos (Loops) */
+
+        let contador = 1;
+
+        // antes de empezar a ejecutar las lineas de codigo 
+        // que condicionan el while la condicion debe cumplirse
+        while (contador < 10) {
+            console.log(`While: ${contador}`);
+            contador++;
+        }
+
+        //en este caso siempre se va a ejecutar una vez todo el 
+        //codigo del do
+        do {
+            console.log(`Do While: ${contador}`);
+            contador++;
+        } while (contador < 10);
+
+        // for (inicializacion de la variable; condicion a evaluar;
+        // decremento o incremento) {
+        //    sentencias que ejecuta el for
+        // }
+        for (let i = 0; i < 10; i++) {
+            console.log(`For: ${i}`);
+        }
+
+        let numeros = [10, 20, 30, 40, 50, 60, 70, 80, 90];
+
+        for (let i = 0; i < numeros.length; i++) {
+            console.log(`For Array: ${numeros[i]}`);
+        }
+
+        //variantes del for con ecmascript6
+
+        const personal = {
+            nombre: "elian",
+            apellido: "Germosen",
+            edad: 20
+        }
+
+        /*
+        for in permite recorrer todas las propiedades de
+        un arreglo
+        */
+
+        // for (const propiedad in personal) {
+        //     console.log(`For In: ${propiedad}`);
+        // }
+
+        /*
+        permite recorrer e iterar los atributos que tenga 
+        un obejto
+        */
+        for (const propiedad in personal) {
+            console.log(`key: ${propiedad}, value: ${personal[propiedad]}`);
+        }
+
+        /*
+        for of permite recorrer todos los elementos de 
+        cualquier objeto que sea iterable en JS.
+        */
+
+        for (const elemento of numeros) {
+            console.log(elemento)
+        }
+
+        let cadena = "Hola Mundo";
+
+        for (const caracter of cadena) {
+            console.log(caracter)
+        }
 
     </script>
 </body>
