@@ -638,6 +638,33 @@
             console.log(caracter)
         }
 
+        /* CAP 16. Manejo de Errores */
+
+        //ejemplo1
+        try {
+            console.log("en el try se agrega el codigo a evaluar.");
+            noExiste;
+            console.log("segundo mensaje try.");
+        } catch (error) {
+            console.log("captura cualquier error lanzado en el try.");
+            console.log(error);
+        } finally {
+            console.log("el bloque finally se ejecutara siempre al final de un bloque try..catch.");
+        }
+
+        //ejemplo2
+        try {
+            let tryNumber = "a";
+            //isNaN es una funcion que se le pasa un numero
+            //evaluara si es un numero y si no lo es devolvera un false
+            if (isNaN(tryNumber)) {
+                throw new Error("El caracter introducido no es un numero.");
+                //mensaje de error personalizado
+            }
+            console.log(tryNumber * tryNumber);
+        } catch (error) {
+            console.log(`se produjo el siguiente error: ${error}`);
+        }
     </script>
 </body>
 
