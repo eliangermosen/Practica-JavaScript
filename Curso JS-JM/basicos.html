@@ -688,6 +688,32 @@
             }
             console.log(`${numerosTen[i]}`);
         }
+
+        /* CAP 18. Destructuración */
+
+        const numerosDestruct = [1, 2, 3];
+
+        //SIN DESTRUCTURACION
+        let uno = numerosDestruct[0],
+            dos = numerosDestruct[1],
+            tres = numerosDestruct[2];
+
+        console.log(`${uno} ${dos} ${tres}`);
+
+        //CON DESTRUCTURACION
+        const [one, two, three] = numerosDestruct;
+        console.log(`${one} ${two} ${three}`);
+
+        const persona = {
+            nombrePersona: "Elian",
+            apellidoPersona: "Germosen",
+            edadPersona: 20
+        }
+
+        //para que la destructuracion funcione en los objetos
+        //la variable debe llamarse igual que a la que se quiere asignar el valor
+        let { nombrePersona, apellidoPersona, edadPersona } = persona;
+        console.log(`${nombrePersona} ${apellidoPersona} ${edadPersona}`);
     </script>
 </body>
 
