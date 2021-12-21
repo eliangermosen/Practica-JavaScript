@@ -665,6 +665,29 @@
         } catch (error) {
             console.log(`se produjo el siguiente error: ${error}`);
         }
+
+        /* CAP 17. Break & Continue */
+
+        const numerosTen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+
+        //en los metodos de los arreglos como foreach 
+        //no se pueden utilizar el break o continue
+        //pero si en las demas estructuras de control como for, while, etc...
+
+        for (let i = 0; i < numerosTen.length; i++) {
+            if (i === 5) {
+                break;
+            }
+            // console.log(`${i}`);
+            console.log(`${numerosTen[i]}`);
+        }
+
+        for (let i = 0; i < numerosTen.length; i++) {
+            if (i === 5) {
+                continue;
+            }
+            console.log(`${numerosTen[i]}`);
+        }
     </script>
 </body>
 
