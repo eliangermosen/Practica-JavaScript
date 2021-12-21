@@ -714,6 +714,33 @@
         //la variable debe llamarse igual que a la que se quiere asignar el valor
         let { nombrePersona, apellidoPersona, edadPersona } = persona;
         console.log(`${nombrePersona} ${apellidoPersona} ${edadPersona}`);
+
+        /* CAP 19. Objetos literales */
+
+        let nombreObj = "TiLiN",
+            edadObj = 2;
+
+        const perro = {
+            nombreObj: nombreObj,
+            edadObj: edadObj,
+            ladrar: function () {
+                console.log("guaaauuu guaaaaauuuu!!!")
+            }
+        }
+        console.log(perro);
+        perro.ladrar();
+
+        const dog = {
+            nombreObj,
+            edadObj,
+            raza: "callejero",
+            ladrar() {
+                console.log("guaaauuu guaaaaauuuu guaaaaauuuu!!!")
+            }
+        }
+        console.log(dog);
+        dog.ladrar();
+
     </script>
 </body>
 
