@@ -775,6 +775,88 @@
         const arr3 = [...arr1, ...arr2];
         console.log(arr3);
 
+        /* CAP 21. Arrow Functions */
+
+        //es una nueva forma de definir funciones anonimas
+        //que sean expresadas
+
+        //funcion declarada
+        function saludarDeclarada() {
+            console.log("HOLA!, saludarDeclarada")
+        }
+        saludarDeclarada();
+
+        //funcion expresada
+        const saludarExpresada = function () {
+            console.log("HOLA!, saludarExpresada")
+        }
+        saludarExpresada();
+
+        //Arrow Function
+        const saludarArrow = () => {
+            console.log("HOLA!, saludarArrow")
+        }
+        saludarArrow();
+
+        //si la funcion tiene solo una linea de codigo puede
+        //realizarse de esta manera
+        const saludarArrowOne = () => console.log("HOLA!, saludarArrowOne");
+        saludarArrowOne();
+
+        //si la funcion flecha o arrow function recibe 
+        //parametros se puede quedar sin parentesis
+        const saludarArrowName = nombre => console.log(`HOLA! ${nombre}`);
+        saludarArrowName("ELIAN");
+
+        // const sumar = function (a, b) {
+        //     return a + b;
+        // }
+        // console.log(sumar(8, 10));
+        const sumar = (a, b) => a + b;
+        console.log(sumar(9, 10));
+
+        const funcionMultiple = () => {
+            console.log("HOLA!, 1");
+            console.log("HOLA!, 2");
+            console.log("HOLA!, 3");
+        }
+        funcionMultiple();
+
+        const numerosF = [1, 2, 3, 4, 5];
+        // numerosF.forEach(function (el, index) {
+        //     console.log(`el elemento ${el} esta en ${index}`)
+        // })
+        ////lo de arriba es lo mismo que lo de abajo
+        numerosF.forEach((el, index) => {
+            console.log(`${el} esta en ${index}`);
+        })
+        //ahora en una sola linea MAS SIMPLE
+        numerosF.forEach((el, index) => console.log(`${el} esta en ${index}`));
+
+        // function thisDeclarada() {
+        //     console.log(this);
+        // }
+        // thisDeclarada();
+
+        const perra = {
+            nombre: "TILIN",
+            // ladrarNormal: function () {
+            //     console.log(this)
+            // },
+            ////LAS ARROW FUNTION TIENEN LA CAPACIDAD DE 
+            ////CAPTURAR EL CONTEXTO DEL OBEJTO EN EL QUE 
+            ////SE ENCUENTRA
+            // ladrarArrow: () => {
+            //     console.log(this)
+            // }
+            ////MANERA CORRECTA DE HACER UNA FUNCION DENTRO
+            ////DE UN OBJETO LITERAL
+            ladrar() {
+                console.log(this)
+            }
+        }
+        perra.ladrar();
+
     </script>
 </body>
 
