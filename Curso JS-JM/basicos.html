@@ -917,7 +917,29 @@
             console.log(`Hola me llamo ${this.nombre}.`);
         }
 
-        const snoopy = new Animal("SNOOPY", "MACHO"),
+        // Herencia Prototípica
+
+        function Perro(nombre, genero, tamanio) {
+            this.super = Animal;
+            this.super(nombre, genero);
+            this.tamanio = tamanio;
+        }
+
+        //Perro esta heredando de Animal
+        Perro.prototype = new Animal();
+        Perro.prototype.constructor = Perro;
+
+        //SOBREESCRITURA DE METODOS DEL PROTOTIPO PADRE EN EL
+        //HIJO
+        Perro.prototype.sonar = function () {
+            console.log("soy un perro y mi sonido es un ladrido.");
+        }
+
+        Perro.prototype.ladrar = function () {
+            console.log("Guaauu Guaauu!!!");
+        }
+
+        const snoopy = new Perro("SNOOPY", "MACHO", "MEDIANO"),
             lolaBunny = new Animal("Lola Bunny", "Hembra");
 
         console.log(snoopy);
@@ -925,6 +947,7 @@
 
         snoopy.sonar();
         snoopy.saludar();
+        snoopy.ladrar();
 
         lolaBunny.sonar();
         lolaBunny.saludar();
