@@ -952,6 +952,56 @@
         lolaBunny.sonar();
         lolaBunny.saludar();
 
+        //JAVASCRIPT ES UN LENGUAJE ORIENTADO A OBEJTOS 
+        //QUE ESTA BASADO EN PROTOTIPOS.
+
+        /* CAP 24. Clases y Herencia */
+
+        class AnimalClass {
+            //el constructor es un método especial que se 
+            //ejecuta en el momento de instanciar la clase
+            constructor(nombre, genero) {
+                this.nombre = nombre;
+                this.genero = genero;
+            }
+            //Metodo
+            sonar() {
+                console.log("hago sonidos porque estoy vivo.");
+            }
+            saludar() {
+                console.log(`Hola me llamo ${this.nombre}.`);
+            }
+        }
+
+        //con extends se le dice que herede
+        class PerroClass extends AnimalClass {
+            constructor(nombre, genero, tamanio) {
+                //con el método super() se manda a llamar 
+                //el constructor de la clase padre
+                super(nombre, genero);
+                this.tamanio = tamanio;
+            }
+            sonar() {
+                console.log("soy un perro y mi sonido es un ladrido");
+            }
+            ladrar() {
+                console.log("guauu guauu!!!");
+            }
+        }
+
+        const mimi = new AnimalClass("Mimi", "Hembra"),
+            scooby = new PerroClass("Scooby", "Macho", "Gigante");
+
+        console.log(mimi);
+        mimi.saludar();
+        mimi.sonar();
+
+        console.log(scooby);
+        scooby.saludar();
+        scooby.sonar();
+
+        //JAVASCRIPT LEE LAS CLASES Y LAS CONVIERTE A PROTOTIPOS
+
     </script>
 </body>
 
