@@ -857,6 +857,78 @@
         }
         perra.ladrar();
 
+        /* CAP 22. Prototipos */
+
+        // POO
+        /*
+        Clases: Modelo a seguir.
+        Objetos: Es una instancia de una clase.
+        Atributos: es una característica o propiedad del 
+            objeto (son variables dentro de un objeto).
+        Métodos: son las acciones que un objeto puede 
+            realizar (son funciones dentro de un objeto).
+        */
+
+        /* const animal = {
+            nombre: "Snoopy",
+            sonar() {
+                console.log("hago sonidos porque estoy vivo.");
+            }
+        }
+        console.log(animal);
+
+        const animal2 = {
+            nombre: "Lola Bunny",
+            sonar() {
+                console.log("hago sonidos porque estoy vivo.");
+            }
+        }
+        console.log(animal2); */
+
+        //FUNCION CONSTRUCTURA
+        /* function Animal(nombre, genero) {
+            // Atributos
+            this.nombre = nombre;
+            this.genero = genero;
+
+            //Metodo
+            this.sonar = function () {
+                console.log("hago sonidos porque estoy vivo.");
+            }
+            this.saludar = function () {
+                console.log(`Hola me llamo ${this.nombre}.`);
+            }
+        } */
+
+        //FUNCION CONSTRUCTURA DONDE ASIGNAMOS LOS METODOS AL
+        //PROTOTIPO NO A LA FUNCION COMO TAL
+        //ESTO EFICIENTARA Y EVITARA LA DUPLICIDAD DE FUNCIONES
+        //DENTRO DE INSTANCIAS.
+        function Animal(nombre, genero) {
+            // Atributos
+            this.nombre = nombre;
+            this.genero = genero;
+        }
+        //Metodos agregados al prototipo de la funcion constructura.
+        Animal.prototype.sonar = function () {
+            console.log("hago sonidos porque estoy vivo.");
+        }
+        Animal.prototype.saludar = function () {
+            console.log(`Hola me llamo ${this.nombre}.`);
+        }
+
+        const snoopy = new Animal("SNOOPY", "MACHO"),
+            lolaBunny = new Animal("Lola Bunny", "Hembra");
+
+        console.log(snoopy);
+        console.log(lolaBunny);
+
+        snoopy.sonar();
+        snoopy.saludar();
+
+        lolaBunny.sonar();
+        lolaBunny.saludar();
+
     </script>
 </body>
 
