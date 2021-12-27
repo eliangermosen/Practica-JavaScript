@@ -980,6 +980,7 @@
                 //el constructor de la clase padre
                 super(nombre, genero);
                 this.tamanio = tamanio;
+                this.raza = null;
             }
             sonar() {
                 console.log("soy un perro y mi sonido es un ladrido");
@@ -987,7 +988,26 @@
             ladrar() {
                 console.log("guauu guauu!!!");
             }
+
+            //un método estático se pueden ejecutar sin
+            //necesidad de instanciar la clase
+            static queEres(){
+                console.log("Los perros somos animales mamíferos que pertenecemos a la familia de los caninos. Somos considerados los mejores amigos del hombre.");
+            }
+
+            //Los setters y getters son métodos 
+            //especiales que nos permiten establecer y 
+            //obtener los valores de atributos de nuestra 
+            //clase
+            get getRaza() {
+                return this.raza;
+            }
+            set setRaza(raza) {
+                this.raza = raza;
+            }
         }
+
+        PerroClass.queEres();
 
         const mimi = new AnimalClass("Mimi", "Hembra"),
             scooby = new PerroClass("Scooby", "Macho", "Gigante");
@@ -999,8 +1019,18 @@
         console.log(scooby);
         scooby.saludar();
         scooby.sonar();
+        scooby.setRaza = "Gran Danes";
+        console.log(scooby.getRaza);
 
         //JAVASCRIPT LEE LAS CLASES Y LAS CONVIERTE A PROTOTIPOS
+        
+        //LOS METODOS O CLASES PRIVADOS EN JS NO EXISTEN
+        //TODOS SE CREAN POR DEFAULT PUBLICAS POR ESO NO ES NECESARIO PONER PUBLIC
+        
+        /* CAP 25. Métodos estáticos, getters y setters */
+
+        //un método estático se pueden ejecutar sin 
+        //necesidad de instanciar la clase
 
     </script>
 </body>
