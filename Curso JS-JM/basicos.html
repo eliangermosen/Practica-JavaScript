@@ -991,7 +991,7 @@
 
             //un método estático se pueden ejecutar sin
             //necesidad de instanciar la clase
-            static queEres(){
+            static queEres() {
                 console.log("Los perros somos animales mamíferos que pertenecemos a la familia de los caninos. Somos considerados los mejores amigos del hombre.");
             }
 
@@ -1023,14 +1023,100 @@
         console.log(scooby.getRaza);
 
         //JAVASCRIPT LEE LAS CLASES Y LAS CONVIERTE A PROTOTIPOS
-        
+
         //LOS METODOS O CLASES PRIVADOS EN JS NO EXISTEN
         //TODOS SE CREAN POR DEFAULT PUBLICAS POR ESO NO ES NECESARIO PONER PUBLIC
-        
+
         /* CAP 25. Métodos estáticos, getters y setters */
 
         //un método estático se pueden ejecutar sin 
         //necesidad de instanciar la clase
+
+        /* CAP 26. Objeto console */
+
+        console.log(console);
+        console.error("esto es un error.");
+        console.warn("esto es un aviso.");
+        console.info("Esto es un mensaje informativo.")//es similar al console.log
+        console.log("Un registro de lo que ha pasado en nuestra aplicacion.");
+
+        let consoleNombre = "Elian",
+            consoleApellido = "Germosen",
+            consoleEdad = 20;
+
+        console.log(consoleNombre);
+        console.log(consoleApellido);
+        console.log(consoleEdad);
+        console.log(consoleNombre, consoleApellido, consoleEdad);
+        console.log(`Hola mi nombre es ${consoleNombre} ${consoleApellido} y tengo ${consoleEdad} años.`);
+        console.log(`Hola mi nombre es %s %s y tengo %d años.`, consoleNombre, consoleApellido, consoleEdad);
+        console.clear();
+
+        console.log(window);
+        console.log(document);
+        console.dir(window);
+        console.dir(document);
+        console.clear();
+
+        //agrupando sin colapso
+        console.group("LOS CURSOS DE MIRCHA EN YT.");
+        console.log("JS");
+        console.log("HTML");
+        console.log("CSS");
+        console.groupEnd();
+
+        //agrupando con colapso
+        console.groupCollapsed("LOS CURSOS DE MIRCHA EN YT.");
+        console.log("JS");
+        console.log("HTML");
+        console.log("CSS");
+        console.groupEnd();
+
+        console.clear();
+
+        console.log(console);
+        console.table(Object.entries(console));//haciendo tabla
+        console.table(Object.entries(console).sort());//ordenando de manera ascendente la tabla
+        console.clear();
+
+        const consoleNumeros = [1, 2, 3, 4, 5],
+            consoleVocales = ["a", "e", "i", "o", "u"];
+
+        console.table(consoleNumeros);
+        console.table(consoleVocales);
+
+        const consolePerro = {
+            nombre: "duke",
+            raza: "duke",
+            color: "marron"
+        }
+        console.table(consolePerro);
+
+        console.clear();
+
+        console.time("Cuanto tiempo tarda mi código");
+        const arrConsole = Array(1000000);
+        for (i = 1; i < arrConsole.length; i++) {
+            arrConsole[i] = i;
+        }
+        console.timeEnd("Cuanto tiempo tarda mi código");
+        // console.log(arrConsole);
+
+        console.clear();
+
+        for (let i = 0; i <= 100; i++) {
+            console.count("codifo for console");
+            // console.log(i);
+            arrConsole[i] = i;
+        }
+
+        console.clear();
+
+        let consoleX = 1,
+            consoleY = 2,
+            pruebaXY = "Se espera que X siempre sea menor que Y";
+        //se puede utilizar como prueba unitaria.
+        console.assert(consoleX < consoleY, { consoleX, consoleY, pruebaXY });
 
     </script>
 </body>
