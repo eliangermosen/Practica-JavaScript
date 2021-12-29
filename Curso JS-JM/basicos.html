@@ -1118,6 +1118,56 @@
         //se puede utilizar como prueba unitaria.
         console.assert(consoleX < consoleY, { consoleX, consoleY, pruebaXY });
 
+        /* CAP 26. Objeto Date */
+
+        //GMT-04:00 = REP.DOM. esta menos 4 horas del 
+        //meridiano de grenwich o londres que es 
+        //considerada la hora cero
+        console.log(Date());
+
+        let fecha = new Date();
+        //FECHA COMPLETA
+        console.log(fecha);
+        //DIA
+        console.log(fecha.getDate());
+        //DIA DE LA SEMANA DE DOMINGO A SABADO
+        //día de la semana D L M Mi J V S -> 0 1 2 3 4 5 6
+        console.log(fecha.getDay());
+        //MES
+        //mes Ene Feb Mar Abr May Jun Jul Ago Sep Oct Nov Dic -> 0 1 2 3 4 5 6 7 8 9 10 11
+        console.log(fecha.getMonth());
+        //año
+        console.log(fecha.getFullYear());
+        //HORA
+        console.log(fecha.getHours());
+        //MINUTOS
+        console.log(fecha.getMinutes());
+        //SEGUNDOS
+        console.log(fecha.getSeconds());
+        //MILISEGUNDOS
+        console.log(fecha.getMilliseconds());
+        //FEHCA COMPLETA
+        console.log(fecha.toString());
+        //FECHA SIN HORA
+        console.log(fecha.toDateString());
+        //FECHA DE MANERA LOCAL
+        console.log(fecha.toLocaleString());
+        //FECHA SOLAMENTE
+        console.log(fecha.toLocaleDateString());
+        //HORA SOLAMENTE
+        console.log(fecha.toLocaleTimeString());
+        //
+        console.log(fecha.getTimezoneOffset());
+        //FECHA Y HORA DE LONDRES QUE ES LA HORA CERO CON UTC
+        console.log(fecha.getUTCDate());
+        console.log(fecha.getUTCHours());
+        //SIGNIFICA CUANTOS SEGUNDOS HAN PASADO DESDE 
+        //EL 1 DE ENERO DE 1970
+        console.log(Date.now());
+        //
+        let cumpleElian = new Date(2001, 9, 19);
+        console.log(cumpleElian);
+
     </script>
 </body>
 
