@@ -102,7 +102,7 @@
             }, 0 | Math.random() * 1000);
         }
 
-        cuadradoCallBack(0, (value, result) => {
+        /* cuadradoCallBack(0, (value, result) => {
             console.log("INICIA CALLBACK");
             console.log(`CALLBACK: ${value}, ${result}`);
             cuadradoCallBack(1, (value, result) => {
@@ -123,7 +123,54 @@
                     });
                 });
             });
-        });
+        }); */
+
+        /* CAP 47. Promesas */
+
+        function cuadradoPromise(value) {
+            if (typeof value !== "number") {
+                return Promise.reject(`ERROR EL VALOR ${value} INGRESADO NO ES UN NUMERO`);
+            }
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    //resolve return positivo si se cumple
+                    resolve({
+                        value,
+                        result: value * value
+                    });
+                    //reject return negativo
+                }, 0 | Math.random() * 1000);
+            })
+        }
+
+        cuadradoPromise(0)
+            .then((obj) => {
+                // console.log(obj);
+                console.log("Inicio Promise");
+                console.log(`Promise: ${obj.value}, ${obj.result}`);
+                return cuadradoPromise(1);
+            })
+            .then((obj) => {
+                console.log(`Promise: ${obj.value}, ${obj.result}`);
+                return cuadradoPromise(2);
+            })
+            .then((obj) => {
+                console.log(`Promise: ${obj.value}, ${obj.result}`);
+                return cuadradoPromise("3");
+            })
+            .then((obj) => {
+                console.log(`Promise: ${obj.value}, ${obj.result}`);
+                return cuadradoPromise(4);
+            })
+            .then((obj) => {
+                console.log(`Promise: ${obj.value}, ${obj.result}`);
+                return cuadradoPromise(5);
+            })
+            .then((obj) => {
+                console.log(`Promise: ${obj.value}, ${obj.result}`);
+                console.log("FIN DE LA PROMESA.")
+            })
+            .catch(err => console.error(err));
 
     </script>
 </body>
