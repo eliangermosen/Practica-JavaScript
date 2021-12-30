@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asíncronía en JavaScript</title>
+</head>
+
+<body>
+    <h1>Asíncronía en JavaScript</h1>
+    <script>
+
+        /* CAP 44. Temporizadores (setTimeout & setInterval) */
+
+        console.log("INICIO:");
+
+        // setTimeout(() => {
+        //     console.log("ejecutando un setTimeOut, esto se ejecuta una sola vez");
+        // }, 3000);
+
+        // setInterval(() => {
+        //     console.log("ejecutando un setInterval, esto se ejecuta indefinidamente cada cierto intervalo de tiempo.");
+        // }, 1000);
+
+        // setInterval(() => {
+        //     console.log(new Date().toLocaleTimeString());
+        // }, 1000);
+        // let temporizador = setTimeout(() => {
+        //     console.log(new Date().toLocaleTimeString());
+        // }, 1000);
+        // clearTimeout(temporizador);//cancela el timeout
+        let temporizador = setInterval(() => {
+            console.log(new Date().toLocaleTimeString());
+        }, 1000);
+        clearInterval(temporizador);
+        console.log("DESPUES DEL CLEARINTERVAL");
+
+    </script>
+</body>
+
+</html>
