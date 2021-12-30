@@ -127,7 +127,9 @@
 
         /* CAP 47. Promesas */
 
-        function cuadradoPromise(value) {
+        //EVOLUCION DE LAS CALLBACKS Y MAS ENTENDIBLES Y ORDENADAS
+
+        /* function cuadradoPromise(value) {
             if (typeof value !== "number") {
                 return Promise.reject(`ERROR EL VALOR ${value} INGRESADO NO ES UN NUMERO`);
             }
@@ -138,7 +140,6 @@
                         value,
                         result: value * value
                     });
-                    //reject return negativo
                 }, 0 | Math.random() * 1000);
             })
         }
@@ -170,7 +171,89 @@
                 console.log(`Promise: ${obj.value}, ${obj.result}`);
                 console.log("FIN DE LA PROMESA.")
             })
-            .catch(err => console.error(err));
+            .catch(err => console.error(err)); */
+
+        /* CAP 48. Async - Await */
+
+        //no vienen a reemplazar las promesas si no que
+        //trabajan en conjunto
+
+        function cuadradoPromise(value) {
+            if (typeof value !== "number") {
+                return Promise.reject(`ERROR EL VALOR ${value} INGRESADO NO ES UN NUMERO`);
+            }
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    //resolve return positivo si se cumple
+                    resolve({
+                        value,
+                        result: value * value
+                    });
+                }, 0 | Math.random() * 1000);
+            })
+        }
+
+        //con asyn se le dice que es asincrona la funcion
+        async function funcionAsincronaDeclarada() {
+            try {
+                console.log("INICIO DE ASYNC FUNCTION.");
+
+                //cuando se declara una funcion como asincrona
+                //se utiliza await para esperar el resultado
+                //antes de pasar a la siguiente ejecucion
+                let obj = await cuadradoPromise(0);
+                console.log(`ASYNC FUNCTION: ${obj.value},${obj.result}`);
+
+                obj = await cuadradoPromise(1);
+                console.log(`ASYNC FUNCTION: ${obj.value},${obj.result}`);
+
+                obj = await cuadradoPromise(2);
+                console.log(`ASYNC FUNCTION: ${obj.value},${obj.result}`);
+
+                obj = await cuadradoPromise("3");
+                console.log(`ASYNC FUNCTION: ${obj.value},${obj.result}`);
+
+                obj = await cuadradoPromise(4);
+                console.log(`ASYNC FUNCTION: ${obj.value},${obj.result}`);
+
+                obj = await cuadradoPromise(5);
+                console.log(`ASYNC FUNCTION: ${obj.value},${obj.result}`);
+
+                console.log(`FIN DE ASYNC FUNCTION`);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        funcionAsincronaDeclarada();
+
+        //en arrowfunction el async va antes de los parentesis
+        const funcionAsincronaExpresada = async () => {
+            try {
+                console.log("INICIO DE ASYNC FUNCTION.");
+
+                let obj = await cuadradoPromise(6);
+                console.log(`ASYNC FUNCTION: ${obj.value},${obj.result}`);
+
+                obj = await cuadradoPromise(7);
+                console.log(`ASYNC FUNCTION: ${obj.value},${obj.result}`);
+
+                obj = await cuadradoPromise(8);
+                console.log(`ASYNC FUNCTION: ${obj.value},${obj.result}`);
+
+                obj = await cuadradoPromise("9");
+                console.log(`ASYNC FUNCTION: ${obj.value},${obj.result}`);
+
+                obj = await cuadradoPromise(10);
+                console.log(`ASYNC FUNCTION: ${obj.value},${obj.result}`);
+
+                console.log(`FIN DE ASYNC FUNCTION`);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        funcionAsincronaExpresada();
 
     </script>
 </body>
