@@ -55,7 +55,7 @@
          */
 
         //Código Síncrono Bloqueante
-        (() => {
+        /* (() => {
             console.log("Código Síncrono Bloqueante");
             console.log("INICIO");
 
@@ -69,10 +69,10 @@
             }
             uno();
             console.log("FIN");
-        })();
+        })(); */
 
         //Código Asíncrono No Bloqueante
-        (() => {
+        /* (() => {
             console.log("Código Asíncrono No Bloqueante");
             console.log("INICIO");
 
@@ -90,7 +90,40 @@
             }
             uno();
             console.log("FIN");
-        })();
+        })(); */
+
+        /* CAP 46. Callbacks */
+        //llamada devuelta es una funcion que se ejecutara
+        //despues que otra lo haga.
+
+        function cuadradoCallBack(value, callback) {
+            setTimeout(() => {
+                callback(value, value * value);
+            }, 0 | Math.random() * 1000);
+        }
+
+        cuadradoCallBack(0, (value, result) => {
+            console.log("INICIA CALLBACK");
+            console.log(`CALLBACK: ${value}, ${result}`);
+            cuadradoCallBack(1, (value, result) => {
+                console.log(`CALLBACK: ${value}, ${result}`);
+                cuadradoCallBack(2, (value, result) => {
+                    console.log(`CALLBACK: ${value}, ${result}`);
+                    cuadradoCallBack(3, (value, result) => {
+                        console.log(`CALLBACK: ${value}, ${result}`);
+                        cuadradoCallBack(4, (value, result) => {
+                            console.log(`CALLBACK: ${value}, ${result}`);
+                            cuadradoCallBack(5, (value, result) => {
+                                console.log(`CALLBACK: ${value}, ${result}`);
+                                console.log("Fin Callback");
+                                console.log("Callback Hell !!!!!😈🤘");
+                                console.log("http://callbackhell.com/");
+                            });
+                        });
+                    });
+                });
+            });
+        });
 
     </script>
 </body>
