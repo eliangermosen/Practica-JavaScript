@@ -203,7 +203,7 @@
 
         /* CAP 53. Iterables & Iterators */
 
-        // const iterable = [1, 2, 3, 4, 5];
+        /* // const iterable = [1, 2, 3, 4, 5];
         // const iterable = new Set([1, 2, 3, 3, 4, 5]);
         const iterable = "hola mundo";
         // const iterable = new Map([["nombre", "jon"], ["edad", 35]]);
@@ -226,6 +226,68 @@
         while (!next.done) {
             console.log(next.value);
             next = iterador.next();
+        } */
+
+        /* CAP 54. Generators */
+        //funcion que nos eprmite trabajar con los 
+        //iteradores mas facilmente
+
+        //function* indica a JS que es una funcion generator
+        function* iterableGenerator() {
+            //los generadores nos permiten volver 
+            //iterables una funcion
+
+            //yield es como un return que le indica a la funcion
+            //que se pare en ese paso para cuando se ejecute 
+            //de nuevo quedarse en la misma posicion
+            yield "hola";
+            console.log("hola consola");
+            yield "hola2";
+            console.log("seguimos con mas instrucciones de codigo");
+            yield "hola3";
+            yield "hola4";
+
+            //tambien esta funcion nos permite manejar asincronia
+        }
+
+        let iterador = iterableGenerator();
+
+        /* console.log(iterador.next());
+        console.log(iterador.next());
+        console.log(iterador.next());
+        console.log(iterador.next());
+        console.log(iterador.next()); */
+
+        //un generador es convertir una funcion en iterable
+
+        for (let itemYield of iterador) {
+            console.log(itemYield);
+        }
+
+        const arrGenerator = [...iterableGenerator()];
+        console.log(arrGenerator);
+
+        function Cuadrado(valor) {
+            setTimeout(() => {
+                return console.log({ valor, resultado: valor * valor })
+            }, Math.random() * 1000);
+        }
+
+        function* generadorCuadrado() {
+            console.log("Inicia Gnerador");
+            yield Cuadrado(0);
+            yield Cuadrado(1);
+            yield Cuadrado(2);
+            yield Cuadrado(3);
+            yield Cuadrado(4);
+            yield Cuadrado(5);
+            console.log("Termina Gnerador");
+        }
+
+        let generadorVari = generadorCuadrado();
+
+        for (let yieldCuadrado of generadorVari) {
+            console.log(yieldCuadrado);
         }
     </script>
 </body>
