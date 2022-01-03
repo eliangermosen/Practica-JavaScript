@@ -94,6 +94,50 @@
         //limpiar set
         setAdd.clear();
         console.log(setAdd);
+
+        /* CAP 50. Maps */
+
+        //es un objeto que nos sirve para almacenar valores
+        //asociados a objetos
+
+        const mapa = new Map();
+        mapa.set("nombre", "elian");
+        mapa.set("apellido", "germosen");
+        mapa.set("edad", "20");
+        console.log(mapa);
+        //tamanio
+        console.log(mapa.size);
+        //comprobando si contiene esta propiedad
+        console.log(mapa.has("correo"));
+        console.log(mapa.has("apellido"));
+        //obteniendo valores
+        console.log(mapa.get("nombre"));
+        mapa.set("nombre", "Elian Manuel");
+        console.log(mapa.get("nombre"));
+        //eliminar del map
+        mapa.delete("apellido");
+
+        mapa.set(19, "diecinueve");
+        mapa.set(false, "falso");
+        mapa.set({}, {});
+        console.log(mapa);
+
+        for (let [key, value] of mapa) {
+            console.log(`LLAVE: ${key}, VALOR: ${value}`);
+        };
+
+        const mapa2 = new Map([
+            ["nombre", "Manuel"],
+            ["edad", "20"],
+            ["nacionalidad", "DOM"],
+            [null, "nulo"]
+        ]);
+        console.log(mapa2);
+
+        const llavesMapa2 = [...mapa2.keys()];
+        const valoresMapa2 = [...mapa2.values()];
+        console.log(llavesMapa2);
+        console.log(valoresMapa2);
     </script>
 </body>
 
