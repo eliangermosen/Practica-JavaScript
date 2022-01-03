@@ -95,7 +95,7 @@
         setAdd.clear();
         console.log(setAdd);
 
-        /* CAP 50. Maps */
+        /* CAP 51. Maps */
 
         //es un objeto que nos sirve para almacenar valores
         //asociados a objetos
@@ -139,7 +139,7 @@
         console.log(llavesMapa2);
         console.log(valoresMapa2);
 
-        /* CAP 51. WeakSets & WeakMaps */
+        /* CAP 52. WeakSets & WeakMaps */
 
         //REFERENCIAS DEBILES
 
@@ -169,7 +169,7 @@
             valor3 = null;
         }, 5000); */
 
-        const wm = new WeakMap();
+        /* const wm = new WeakMap();
 
         let llave1 = {};
         let llave2 = {};
@@ -198,8 +198,35 @@
             llave1 = null;
             llave2 = null;
             llave3 = null;
-        }, 5000);
+        }, 5000); */
         //NOS AYUDA A MEJORAR EL RENDIMIENTO DE NUESTRA APP
+
+        /* CAP 53. Iterables & Iterators */
+
+        // const iterable = [1, 2, 3, 4, 5];
+        // const iterable = new Set([1, 2, 3, 3, 4, 5]);
+        const iterable = "hola mundo";
+        // const iterable = new Map([["nombre", "jon"], ["edad", 35]]);
+
+        //accedemos al iterador de nuestro iterable
+        const iterador = iterable[Symbol.iterator]();
+
+        console.log(iterable);
+        console.log(iterador);
+
+        // console.log(iterador.next());
+        // console.log(iterador.next());
+        // console.log(iterador.next());
+        // console.log(iterador.next());
+        // console.log(iterador.next());
+        // console.log(iterador.next());
+
+        let next = iterador.next();
+
+        while (!next.done) {
+            console.log(next.value);
+            next = iterador.next();
+        }
     </script>
 </body>
 
