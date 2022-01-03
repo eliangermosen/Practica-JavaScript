@@ -48,6 +48,52 @@
         }
 
         console.log(Object.getOwnPropertySymbols(persona));
+
+        /* CAP 50. Sets */
+
+        //parece array pero solo permite agregar datos unicos
+        //se puede usar en validaciones de valores unicos
+
+        const set = new Set([1, 2, 3, 3, 4, 5, true, true, false, false, {}, {}, "hola", "HOla"]);
+        console.log(set);
+        console.log(set.size);
+
+        const setAdd = new Set();
+        setAdd.add(1);
+        setAdd.add(2);
+        setAdd.add(2);
+        setAdd.add(3);
+        setAdd.add(true);
+        setAdd.add(false);
+        setAdd.add(true);
+        setAdd.add({});
+        console.log(setAdd);
+        console.log(setAdd.size);
+
+        console.log("FOR IN SET")
+        for (item of set) {
+            console.log(item)
+        }
+
+        console.log("FOR EACH SETADD")
+        setAdd.forEach(item => console.log(item));
+
+        //convirtiendo set a arreglo
+        let arrSet = Array.from(set);
+        console.log(arrSet);
+        console.log(arrSet[10]);
+
+        set.delete("HOla");//eliminando del set
+        console.log(set);
+
+        //comprobando si el set contiene este valor
+        console.log(set.has("hola"));
+        console.log(set.has(5));
+        console.log(set.has(50));
+
+        //limpiar set
+        setAdd.clear();
+        console.log(setAdd);
     </script>
 </body>
 
