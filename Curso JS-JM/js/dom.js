@@ -37,4 +37,27 @@ console.log(document.scripts);//muestra dos scripts debido al live server y el m
 setTimeout(() => {
     console.log(document.getSelection().toString());
 }, 3000);
-document.write("<h2>Hola Mundo</h2>");//no es buena practica utilizarlo
+//document.write("<h2>Hola Mundo</h2>");//no es buena practica utilizarlo
+
+/* CAP 62. DOM: Nodos, Elementos y Selectores */
+
+//anteriormente HOY DIA NO SE USAN
+console.log(document.getElementsByTagName("li"));
+console.log(document.getElementsByClassName("card"));
+console.log(document.getElementsByName("nombre"));
+//esos 3 fueron reemplazados por los mas abajo
+
+console.log(document.getElementById("menu"));//trabaja mas rapido
+
+//por estos
+console.log(document.querySelector("#menu"));//si se debe ponerl el . o #
+console.log(document.querySelector("a"));//solo traera el primero que encuentre
+console.log(document.querySelectorAll("a"));//los trae todos
+console.log(document.querySelectorAll("a").length);
+//trae todos los enlaces y por cada uno imprimelo en consola
+document.querySelectorAll("a").forEach(el => console.log(el));
+console.log(document.querySelector(".card"));//la primera
+console.log(document.querySelectorAll(".card"));//todas
+console.log(document.querySelectorAll(".card")[2]);//la posicion 3
+console.log(document.querySelectorAll("#menu li"));//solo las li dentro del id menu
+console.log(document.querySelector("#menu li"));//solo las li dentro del id menu
