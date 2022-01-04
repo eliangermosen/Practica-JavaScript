@@ -34,9 +34,9 @@ console.log(document.images);
 console.log(document.forms);
 console.log(document.styleSheets);
 console.log(document.scripts);//muestra dos scripts debido al live server y el mio
-setTimeout(() => {
-    console.log(document.getSelection().toString());
-}, 3000);
+// setTimeout(() => {
+//     console.log(document.getSelection().toString());
+// }, 3000);
 //document.write("<h2>Hola Mundo</h2>");//no es buena practica utilizarlo
 
 /* CAP 62. DOM: Nodos, Elementos y Selectores */
@@ -61,3 +61,41 @@ console.log(document.querySelectorAll(".card"));//todas
 console.log(document.querySelectorAll(".card")[2]);//la posicion 3
 console.log(document.querySelectorAll("#menu li"));//solo las li dentro del id menu
 console.log(document.querySelector("#menu li"));//solo las li dentro del id menu
+
+/* CAP 63. DOM: Atributos y Data-Attributes */
+
+console.log(document.documentElement.lang);
+console.log(document.documentElement.getAttribute("lang"));
+
+console.log(document.querySelector(".link-dom").href);
+console.log(document.querySelector(".link-dom").getAttribute("href"));//forma correcta
+
+document.documentElement.lang = "en";
+console.log(document.documentElement.lang);
+document.documentElement.setAttribute("lang", "es-DO");
+console.log(document.documentElement.lang);
+
+//se puede guardar en let o const mircha usa const
+const $linkDOM = document.querySelector(".link-dom");
+//todas las variables que van a almacenar elementos del dom 
+//se declaran con signo de dolar como buena practica
+
+$linkDOM.setAttribute("target", "_blank");//agregando atributo
+$linkDOM.setAttribute("rel", "noopener");
+$linkDOM.setAttribute("href", "https://www.youtube.com/");
+console.log($linkDOM.hasAttribute("rel"));//validando si tiene ese atributo
+$linkDOM.removeAttribute("rel");//eliminado atributo
+console.log($linkDOM.hasAttribute("rel"));
+
+//Data-Attributes
+console.log($linkDOM.getAttribute("data-description"));
+console.log($linkDOM.dataset);
+console.log($linkDOM.dataset.description);
+$linkDOM.setAttribute("data-description", "Modelo de Objeto del Documento");
+console.log($linkDOM.dataset.description);
+$linkDOM.dataset.description = "Suscribete al canal de YT"
+console.log($linkDOM.dataset.description);
+console.log($linkDOM.hasAttribute("data-id"));//validando
+console.log($linkDOM.removeAttribute("data-id"));//eliminado
+console.log($linkDOM.hasAttribute("data-id"));
+
