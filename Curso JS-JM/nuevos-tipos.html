@@ -286,9 +286,48 @@
 
         let generadorVari = generadorCuadrado();
 
-        for (let yieldCuadrado of generadorVari) {
-            console.log(yieldCuadrado);
+        // for (let yieldCuadrado of generadorVari) {
+        //     console.log(yieldCuadrado);
+        // }
+
+        /* CAP 55. Proxies */
+
+        //es un nuevo mecanismo que permite crear un objeto
+        //basado en un objeto literal inicial
+
+        //objeto base
+        const personaProxies = {
+            nombre: "",
+            apellido: "",
+            edad: 0
+        };
+
+        //handler
+        const manejador = {
+            set(obj, propiedades, valor) {
+                //evaluara que en la lista original exista la propiedad
+                if (Object.keys(obj).indexOf(propiedades) === -1) {
+                    //entrara aqui si no existe la propiedad del obejto original
+                    return console.error(`LA PROPIEDAD ${propiedades} NO EXISTE EN EL OBEJTO PERSONA`);
+                }
+                //con la expresion regular se le dice que solo acepte letras mayus y minus de a-z y caracteres latinosy espacios
+                if ((propiedades === "nombre" || propiedades === "apellido")
+                    &&
+                    !(/^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/g.test(valor))) {
+                    return console.error(`LA PROPIEDAD ${propiedades} SOLO ACEPTA LETRAS Y ESPACIOS`);
+                }
+                obj[propiedades] = valor;
+            }
         }
+
+        const elian = new Proxy(personaProxies, manejador);
+        elian.nombre = "Elian";
+        elian.apellido = "Germosen";
+        elian.edad = 20;
+        elian.twitter = "@elianmtg"
+
+        console.log(elian);
+        console.log(personaProxies);
     </script>
 </body>
 
