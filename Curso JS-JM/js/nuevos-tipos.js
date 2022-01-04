@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuevos Tipos de Datos en JavaScript</title>
-</head>
-
-<body>
-    <!-- vienen despues del anio 2015 con el ecmascript -->
-    <h1>Nuevos Tipos de Datos en JavaScript</h1>
-    <script>
-        /* CAP 49. Symbols */
+/* CAP 49. Symbols */
 
         //symbol permiten crear identificadores unicos
         let id = Symbol("id");
@@ -344,7 +330,3 @@
         console.log(objetoUsuarios);
         usuarios.forEach((usuario, index) => objetoUsuarios[`id_${index}`] = usuario);
         console.log(objetoUsuarios);
-    </script>
-</body>
-
-</html>
