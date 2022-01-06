@@ -358,3 +358,27 @@ $cardsTemplate.appendChild($fragment);
 
 //las etiquetas template no se renderizan en el dom
 //porque el objetivo de esta es para ser un patron a seguir
+
+/* CAP 70. DOM: Modificando Elementos (Old Style) */
+
+const $cardsElement = document.querySelector(".cards"),
+$newCard = document.createElement("figure"),
+$cloneCards = $cardsElement.cloneNode(true);
+
+$newCard.innerHTML = `
+<img src="https://placeimg.com/200/200/any" alt="Any">
+  <figcaption>Any</figcaption>
+`;
+
+$newCard.classList.add("card");
+
+//reemplazando el cardelement numero 3 por new card
+//$cardsElement.replaceChild($newCard, $cardsElement.children[2]);
+
+//insertar antes de un nodo especifico
+//$cardsElement.insertBefore($newCard,$cardsElement.firstElementChild);
+
+//eliminado en especifico
+// $cardsElement.removeChild($cardsElement.lastElementChild);
+
+document.body.appendChild($cloneCards);
