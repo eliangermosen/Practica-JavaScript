@@ -202,3 +202,21 @@ $whatIsDOM.outerHTML = text;
 //reemplaza el elemento del dom por lo que se le pase.
 //en este caso el parrafo que-es por los tres que estan 
 //dentro de text
+
+/* CAP 67. DOM Traversing: Recorriendo el DOM */
+
+const $cards = document.querySelector(".cards");
+console.log($cards);
+console.log($cards.children);//hijos de cards
+console.log($cards.children[2]);
+console.log($cards.parentElement);//retorna el elemento padre
+//console.log($cards.firstChild);//primer hijo nodo
+console.log($cards.firstElementChild);//primer elemento hijo 
+console.log($cards.lastElementChild);//ultimo elemento hijo 
+console.log($cards.previousElementSibling);
+console.log($cards.nextElementSibling);
+console.log($cards.closest("div"));//es nueva esta funcionalidad
+//buscara el padre mas cercano del tipo de selector que le demos
+console.log($cards.closest("body"));
+//tercer hijo de cards | cual es la section mas cercana
+console.log($cards.children[3].closest("section"));
