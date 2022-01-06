@@ -167,3 +167,38 @@ $card.classList.replace("rotate-45", "rotate-135");//reemplaza la clase rotate-4
 $card.classList.add("opacity-80", "sepia");//agregando varias clases se separan por comas
 $card.classList.remove("opacity-80", "sepia");//quitando varias clases se separan por comas
 $card.classList.toggle("opacity-80", "sepia");//
+
+/* CAP 66. DOM: DOM: Texto y HTML */
+
+const $whatIsDOM = document.getElementById("que-es");
+
+let text = `
+<p>
+El Modelo de Objetos del Documento (<b><i>DOM - Document Object Model</i></b>) es un API para documentos HTML y XML.
+</p>
+<p>
+Éste proveé una representación estructural del documento, permitiendo modificar su contenido y presentación visual mediante código JS.
+</p>
+<p>
+<mark>El DOM no es parte de la especificación de JavaScript, es una API para los navegadores.</mark>
+</p>
+`;
+
+//no es parte del standard fue credada para internet explorer
+//$whatIsDOM.innerText = text;//no reconoce las etiquetas html
+$whatIsDOM.textContent = text;
+
+//textContent: Es la propiedad standard
+//innerText: fue credada para internet explorer
+//ambas sirven para agregar contenido textual a un elemento
+
+//reemplaza lo que tenga como contenido y agrega contenido HTML
+$whatIsDOM.innerHTML = text;
+
+//usar textContent cuando solo se le agregara texto
+//usar innerHTML cuando solo se le agregara codigo HTML
+
+$whatIsDOM.outerHTML = text;
+//reemplaza el elemento del dom por lo que se le pase.
+//en este caso el parrafo que-es por los tres que estan 
+//dentro de text
