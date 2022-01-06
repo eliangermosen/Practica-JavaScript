@@ -220,3 +220,93 @@ console.log($cards.closest("div"));//es nueva esta funcionalidad
 console.log($cards.closest("body"));
 //tercer hijo de cards | cual es la section mas cercana
 console.log($cards.children[3].closest("section"));
+
+/* CAP 68. DOM: Creando Elementos y Fragmentos */
+
+const $figure = document.createElement("figure"),
+$img = document.createElement("img"),
+$figcaption = document.createElement("figcaption"),
+$figcaptionText = document.createTextNode("ANIMALS"),
+$figure2 = document.createElement("figure")
+;
+
+// PRIMERA FORMA
+
+$figure.classList.add("card");
+
+$img.setAttribute("src", "https://placeimg.com/200/200/animals");
+$img.setAttribute("alt", "ANIMALS");
+
+$figcaption.appendChild($figcaptionText);
+$figure.appendChild($img);
+$figure.appendChild($figcaption);
+$cards.appendChild($figure);
+
+// SEGUNDA FORMA
+
+$figure2.innerHTML = `
+<img src="https://placeimg.com/200/200/people" alt="People">
+<figcaption>People</figcaption>
+`;
+
+$figure2.classList.add("card");
+$cards.appendChild($figure2);
+
+const estaciones = ["Primavera","Verano","Otonio","Invierno"],
+$ul = document.createElement("ul");
+
+//no es buena practia
+document.write("<h3>ESTACIONES EL ANIO</h3>");
+document.body.appendChild($ul);
+
+estaciones.forEach(el=> {
+    const $li = document.createElement("li");
+    $li.textContent = el;
+    $ul.appendChild($li);
+});
+
+const contienetes = ["Africa","Ameria","Asia","Europa","Oceania"],
+$ul2 = document.createElement("ul");
+
+document.write("<h3>CONTIENENTES DEL MUNDO</h3>");
+document.body.appendChild($ul2);
+
+$ul2.innerHTML = "";
+contienetes.forEach(el => {
+    $ul2.innerHTML +=`<li>${el}</li>`
+});
+
+// TERCERA FORMA
+
+//tecnica de fragmento solo agrega una sola vez al dom
+//en vez de ir agregando 200 una detras e otra
+
+const meses = [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre",
+  ],
+  $ul3 = document.createElement("ul"),
+  $fragment = document.createDocumentFragment();
+
+  meses.forEach(el => {
+      const $li = document.createElement("li");
+      $li.textContent = el;
+      $fragment.appendChild($li);
+  });
+
+document.write("<h3>MESES DEL ANIO</h3>");
+$ul3.appendChild($fragment);
+document.body.appendChild($ul3);
+
+//de esta manera solo se le hace una insercion al DOM
+//es una manera mas optima para el navegador del usuaio
