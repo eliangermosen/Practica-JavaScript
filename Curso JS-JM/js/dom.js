@@ -310,3 +310,51 @@ document.body.appendChild($ul3);
 
 //de esta manera solo se le hace una insercion al DOM
 //es una manera mas optima para el navegador del usuaio
+
+/* CAP 69. DOM: Templates HTML */
+
+const $cardsTemplate = document.querySelector(".cards"),
+$template = document.getElementById("template-card").content,
+$fragmentTemplate = document.createDocumentFragment(),
+cardsContent = [
+    {
+      title: "Tecnología",
+      img: "https://placeimg.com/200/200/tech",
+    },
+    {
+      title: "Animales",
+      img: "https://placeimg.com/200/200/animals",
+    },
+    {
+      title: "Arquitectura",
+      img: "https://placeimg.com/200/200/arch",
+    },
+    {
+      title: "Gente",
+      img: "https://placeimg.com/200/200/people",
+    },
+    {
+      title: "Naturaleza",
+      img: "https://placeimg.com/200/200/nature",
+    },
+];
+
+cardsContent.forEach(el => {
+    $template.querySelector("img").setAttribute("src", el.img);
+    $template.querySelector("img").setAttribute("alt", el.title);
+    $template.querySelector("figcaption").textContent = el.title;
+    
+    //clonando nodo del documento
+    let $clone = document.importNode($template,true);
+    //con true se le dice que haga copia de toda la estructura
+    //con false solo lo haria para etiqueta de apertura y cierre de template
+
+    $fragment.appendChild($clone);
+});
+
+//se le agrega al elemento card el fragmento 
+//con solamente una inserccion
+$cardsTemplate.appendChild($fragment);
+
+//las etiquetas template no se renderizan en el dom
+//porque el objetivo de esta es para ser un patron a seguir
