@@ -455,7 +455,8 @@ $eventoSemantico.onclick = function(e){
 
 //Evento con Manejador Multiple
 
-const $eventoMultiple = document.getElementById("evento-multiple");
+const $eventoMultiple = document.getElementById("evento-multiple"),
+$eventoRemover = document.getElementById("evento-remover");
 
 //addEventListener solo se usa en eventos multiples
 //se llama el evento y la funcion a ejecutar
@@ -468,5 +469,28 @@ $eventoMultiple.addEventListener("click", (e) => {
     console.log(e.target);
     console.log(event);
 });
+
+/* CAP 73. DOM: Eventos con Parámetros y Remover Eventos */
+
+function saludar(nombre = "Desconocid@"){
+    alert(`HOLA ${nombre}`);
+    console.log(event); //e == event
+}
+
+$eventoMultiple.addEventListener("click", () => {
+    saludar();
+    saludar("Elian");
+});
+
+const removerDobleClick = (e) =>{
+    alert(`Removiendo ele evento de tipo ${e.type}`);
+    console.log(e);
+    $eventoRemover.removeEventListener("dblclick", removerDobleClick);
+    $eventoRemover.disabled = true;
+}
+
+$eventoRemover.addEventListener("dblclick", removerDobleClick);
+
+//para pasarle parametros a una funcion se usa arrow functions
 
 
