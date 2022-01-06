@@ -99,3 +99,41 @@ console.log($linkDOM.hasAttribute("data-id"));//validando
 console.log($linkDOM.removeAttribute("data-id"));//eliminado
 console.log($linkDOM.hasAttribute("data-id"));
 
+/* CAP 64. DOM: Estilos y Variables CSS */
+
+console.log($linkDOM.style);
+console.log($linkDOM.getAttribute("style"));
+console.log($linkDOM.style.backgroundColor);
+console.log($linkDOM.style.color);
+console.log(window.getComputedStyle($linkDOM));
+console.log(getComputedStyle($linkDOM).getPropertyValue("color"));
+
+$linkDOM.style.setProperty("text-decoration", "none");
+$linkDOM.style.setProperty("display", "block");
+$linkDOM.style.width = "50%";
+$linkDOM.style.textAlign = "center";
+$linkDOM.style.marginLeft = "auto";
+$linkDOM.style.marginRight = "auto";
+$linkDOM.style.padding = "1rem";//16px
+$linkDOM.style.borderRadius = ".5rem";
+
+console.log($linkDOM.style);
+console.log(window.getComputedStyle($linkDOM));
+
+//Variables CSS = Custom Properties CSS
+
+const $html = document.documentElement,
+$body = document.body;
+
+let varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color"),
+varYellowColor = getComputedStyle($html).getPropertyValue("--yellow-color");
+
+console.log(varDarkColor, varYellowColor);
+
+$body.style.backgroundColor = varDarkColor;//aplica el color negro al background
+$body.style.color = varYellowColor;//aplica el color amarillo a las letras
+
+$html.style.setProperty("--dark-color","#000");//nuevo valor de la variable es negro puro
+varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color");
+
+$body.style.setProperty("background-color", varDarkColor);//asignando el nuevo color
