@@ -137,3 +137,33 @@ $html.style.setProperty("--dark-color","#000");//nuevo valor de la variable es n
 varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color");
 
 $body.style.setProperty("background-color", varDarkColor);//asignando el nuevo color
+
+/* CAP 65. DOM: Clases CSS */
+
+const $card = document.querySelector(".card");
+console.log($card);
+console.log($card.className);
+console.log($card.classList);
+console.log($card.classList.contains("rotate-45"));
+
+$card.classList.add("rotate-45");//agregando clase
+console.log($card.classList.contains("rotate-45"));//evaluando si contiene esa clase
+console.log($card.className);
+console.log($card.classList);
+
+$card.classList.remove("rotate-45");//quitando clase
+console.log($card.classList.contains("rotate-45"));
+
+$card.classList.toggle("rotate-45");//como no tiene la clase se la agrega
+console.log($card.classList.contains("rotate-45"));
+
+$card.classList.toggle("rotate-45");//como tiene la clase se la elimina
+console.log($card.classList.contains("rotate-45"));
+// toggle se puede usar para el dark y light mode 
+
+$card.classList.toggle("rotate-45");
+$card.classList.replace("rotate-45", "rotate-135");//reemplaza la clase rotate-45 por rotate-135
+
+$card.classList.add("opacity-80", "sepia");//agregando varias clases se separan por comas
+$card.classList.remove("opacity-80", "sepia");//quitando varias clases se separan por comas
+$card.classList.toggle("opacity-80", "sepia");//
