@@ -417,4 +417,56 @@ $newCard.querySelector("figcaption").insertAdjacentText("afterbegin","Any");
 // $cardsElement.before($newCard);//hermano anterior
 // $cardsElement.after($newCard);//hermano posterior
 
+/* CAP 72. DOM: Manejadores de Eventos */
+
+/*
+Los eventos son los mecanismos que tenemos en JavaScript 
+para controlar las acciones del usuario y definir el 
+comportamiento del documento en cierto momento o cuando 
+se cumplan ciertas condiciones.
+Las funciones que se ejecutan en un evento se llaman Event 
+Handler (Manejador de Eventos).
+https://developer.mozilla.org/en-US/docs/Web/Events
+*/
+
+//funcion manejadora de eventos
+function holaMundo(){
+    alert("Hola Mundo");
+    //cuando una funcion se ejecuta dentro de un evento podemos
+    //acceder a un objeto especial event
+    console.log(event);
+}
+
+//Evento con Manejador Semantico
+
+const $eventoSemantico = document.getElementById("evento-semantico");
+
+//formula de evento semantico: 
+//elemento html que se le aplicara el evento 
+// - nombre evento - igualarlo a la funcion a ejecutar
+$eventoSemantico.onclick = holaMundo;//sin parentesis para que no se ejecute inmediato
+
+//toda funcion manejadora de evento no puede recibir parametros
+$eventoSemantico.onclick = function(e){
+    alert("Hola Mundo Manejador de Eventos Semántico");
+    console.log(e);
+    console.log(event);
+};
+
+//Evento con Manejador Multiple
+
+const $eventoMultiple = document.getElementById("evento-multiple");
+
+//addEventListener solo se usa en eventos multiples
+//se llama el evento y la funcion a ejecutar
+
+$eventoMultiple.addEventListener("click", holaMundo);//sin parenetesis
+$eventoMultiple.addEventListener("click", (e) => {
+    alert("Hola Mundo Manejador de Eventos Múltiple");
+    console.log(e);
+    console.log(e.type);
+    console.log(e.target);
+    console.log(event);
+});
+
 

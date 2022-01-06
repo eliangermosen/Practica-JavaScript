@@ -140,6 +140,19 @@
             <figcaption></figcaption>
         </figure>
     </template>
+    <h3>Eventos en JavaScript</h3>
+    <h4>Manejadores de Eventos</h4>
+    <!-- Manejador de Eventos o eventHandler se hace 
+        referencia la funcion que se ejectuta en ese evento -->
+    <!-- ES MALA PRACTICA APLICAR EVENTOS EN ATRIBUTOS-->
+    <button onclick="holaMundo()">Evento con atributo HTML</button>
+    <br><br>
+    <!-- ESTA MANERA ES MAS APROPIADA QUE LA ANTERIOR 
+    pero no se pueden ejecutar varias funciones-->
+    <button id="evento-semantico">Evento con Manejador Semantico</button>
+    <br><br>
+    <!-- LA STANDARD ES ESTA -->
+    <button id="evento-multiple">Evento con Manejador Multiple</button>
     <script src="js/dom.js"></script>
 </body>
 
