@@ -361,7 +361,7 @@ $cardsTemplate.appendChild($fragment);
 
 /* CAP 70. DOM: Modificando Elementos (Old Style) */
 
-const $cardsElement = document.querySelector(".cards"),
+/* const $cardsElement = document.querySelector(".cards"),
 $newCard = document.createElement("figure"),
 $cloneCards = $cardsElement.cloneNode(true);
 
@@ -370,7 +370,7 @@ $newCard.innerHTML = `
   <figcaption>Any</figcaption>
 `;
 
-$newCard.classList.add("card");
+$newCard.classList.add("card"); */
 
 //reemplazando el cardelement numero 3 por new card
 //$cardsElement.replaceChild($newCard, $cardsElement.children[2]);
@@ -381,4 +381,40 @@ $newCard.classList.add("card");
 //eliminado en especifico
 // $cardsElement.removeChild($cardsElement.lastElementChild);
 
-document.body.appendChild($cloneCards);
+// document.body.appendChild($cloneCards);
+
+/* CAP 71. DOM: Modificando Elementos (Cool Style) */
+
+/*
+.insertAdjacent...
+  .insertAdjacentElement(position, el) -nodo de tipo elemento
+  .insertAdjacentHTML(position, html) -formato html
+  .insertAdjacentText(position, text) -nodo de texto
+
+Posiciones:
+  beforebegin(hermano anterior)
+  afterbegin(primer hijo)
+  beforeend(ultimo hijo)
+  afterend(hermano siguiente)
+*/
+
+const $cardsElement = document.querySelector(".cards"),
+$newCard = document.createElement("figure");
+
+let $contentCrad = `
+<img src="https://placeimg.com/200/200/any" alt="Any">
+<figcaption></figcaption>
+`;
+
+$newCard.classList.add("card");
+$newCard.insertAdjacentHTML("beforeend",$contentCrad);
+$newCard.querySelector("figcaption").insertAdjacentText("afterbegin","Any");
+
+// $cardsElement.insertAdjacentElement("afterbegin", $newCard)
+
+// $cardsElement.prepend($newCard);//hijo primero
+// $cardsElement.append($newCard);//ultimo hijo del nodo referencia
+// $cardsElement.before($newCard);//hermano anterior
+// $cardsElement.after($newCard);//hermano posterior
+
+
