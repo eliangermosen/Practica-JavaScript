@@ -495,24 +495,35 @@ $eventoRemover.addEventListener("dblclick", removerDobleClick);
 
 /* CAP 74. DOM: Flujo de Eventos (Burbuja y Captura) */
 
-const $divsEventos = document.querySelectorAll(".eventos-flujo div");
+const $divsEventos = document.querySelectorAll(".eventos-flujo div"),
+$linksEventos = document.querySelector(".eventos-flujo a");
 console.log($divsEventos);
 
 function flujoEventos(e){
 console.log(`HOLA TE SALUDA ${this.className}, EL CLICK LO ORIGINO ${e.target.className}`);
+e.stopPropagation();//eliminando propagacion
 };
 
 $divsEventos.forEach(div=>{
   //tercer parametro opcional de addEventListener false por
   //default fase de burbuja del mas interno al mas externo
-  // div.addEventListener("click", flujoEventos, false);
+  div.addEventListener("click", flujoEventos, false);
   
   //fase de captura seria con true del mas externo al mas interno
   // div.addEventListener("click", flujoEventos, true);
 
-  div.addEventListener("click", flujoEventos, {
+  /* div.addEventListener("click", flujoEventos, {
     capture: false, //lo mismo que la linea 508
     once: true //especifica que solo se puede ejecutar una vez
-  });
+  }); */
 })
+
+/* CAP 75. DOM: stopPropagation & preventDefault */
+
+$linksEventos.addEventListener("click", (e) =>{
+  alert("HOLA SOY ELIAN");
+  e.preventDefault();//cancela el comportamiento por default en este caso abrir mi github
+  e.stopPropagation();//eliminando propagacion
+});
+
 
