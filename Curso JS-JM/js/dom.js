@@ -560,7 +560,7 @@ mucho más apropiado.
 Peticiones asíncronas pausan el parseo del DOM.
 */
 
-window.addEventListener("resize", e => {
+/* window.addEventListener("resize", e => {
   console.clear();
   console.log("EVENTO RESIZE");
   console.log(window.innerWidth);
@@ -593,5 +593,31 @@ document.addEventListener("DOMContentLoaded", (e) => {
   console.log(window.screenX);
   console.log(window.screenY);
   console.log(e);
+}); */
+
+/* CAP 78. BOM: Métodos */
+
+// window.alert("Alerta");
+// window.confirm("Confirmacion");
+// window.prompt("Aviso");
+
+const $btnAbrir = document.getElementById("abrir-ventana"),
+$btnCerrar = document.getElementById("cerrar-ventana"),
+$btnImprimir = document.getElementById("imprimir-ventana");
+
+let ventana;
+
+$btnAbrir.addEventListener("click", e=>{
+  // window.open("https://github.com/Elianmtg");
+  ventana = open("https://github.com/Elianmtg");
+});
+
+$btnCerrar.addEventListener("click", e=>{
+  // window.close();
+  ventana.close();
+});
+
+$btnImprimir.addEventListener("click", e=>{
+  window.print();
 });
 
