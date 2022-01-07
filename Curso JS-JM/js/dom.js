@@ -501,13 +501,13 @@ console.log($divsEventos);
 
 function flujoEventos(e){
 console.log(`HOLA TE SALUDA ${this.className}, EL CLICK LO ORIGINO ${e.target.className}`);
-e.stopPropagation();//eliminando propagacion
+// e.stopPropagation();//eliminando propagacion
 };
 
 $divsEventos.forEach(div=>{
   //tercer parametro opcional de addEventListener false por
   //default fase de burbuja del mas interno al mas externo
-  div.addEventListener("click", flujoEventos, false);
+  /* div.addEventListener("click", flujoEventos, false); */
   
   //fase de captura seria con true del mas externo al mas interno
   // div.addEventListener("click", flujoEventos, true);
@@ -520,10 +520,29 @@ $divsEventos.forEach(div=>{
 
 /* CAP 75. DOM: stopPropagation & preventDefault */
 
-$linksEventos.addEventListener("click", (e) =>{
+/* $linksEventos.addEventListener("click", (e) =>{
   alert("HOLA SOY ELIAN");
   e.preventDefault();//cancela el comportamiento por default en este caso abrir mi github
   e.stopPropagation();//eliminando propagacion
+}); */
+
+/* CAP 76. DOM: Delegación de Eventos */
+
+//con esta delegacion en este unico addEventListener se mejora
+//el rendimiento de nuestra pagina web y solo se hace una asignacion
+document.addEventListener("click", (e)=>{
+  console.log("CLICK EN", e.target);
+
+  if(e.target.matches(".eventos-flujo div")){
+    flujoEventos(e);
+  };
+
+  if(e.target.matches(".eventos-flujo a")){
+    alert("HOLA SOY ELIAN");
+    e.preventDefault();
+  };
 });
 
+//esta es la manera mas optima de trabajar con los eventos 
+//en JavaScript
 
