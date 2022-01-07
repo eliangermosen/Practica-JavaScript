@@ -493,4 +493,26 @@ $eventoRemover.addEventListener("dblclick", removerDobleClick);
 
 //para pasarle parametros a una funcion se usa arrow functions
 
+/* CAP 74. DOM: Flujo de Eventos (Burbuja y Captura) */
+
+const $divsEventos = document.querySelectorAll(".eventos-flujo div");
+console.log($divsEventos);
+
+function flujoEventos(e){
+console.log(`HOLA TE SALUDA ${this.className}, EL CLICK LO ORIGINO ${e.target.className}`);
+};
+
+$divsEventos.forEach(div=>{
+  //tercer parametro opcional de addEventListener false por
+  //default fase de burbuja del mas interno al mas externo
+  // div.addEventListener("click", flujoEventos, false);
+  
+  //fase de captura seria con true del mas externo al mas interno
+  // div.addEventListener("click", flujoEventos, true);
+
+  div.addEventListener("click", flujoEventos, {
+    capture: false, //lo mismo que la linea 508
+    once: true //especifica que solo se puede ejecutar una vez
+  });
+})
 
