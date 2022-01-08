@@ -115,7 +115,7 @@
 //el catch para error
 //el finally opcional
 
-//CAP 107. AJAX: API Fetch + Async-Await
+//CAP 108. AJAX: API Fetch + Async-Await
 
 (()=>{
     const $fetchAsync = document.getElementById("fetch-async"),
@@ -152,6 +152,38 @@
     };
 
     getData();
+})();
+
+//CAP 109. Librería Axios
+
+(()=>{
+    const $axios = document.getElementById("axios"),
+    $fragment = document.createDocumentFragment();
+
+    axios
+    .get("https://jsonplaceholder.typicode.com/users")
+    .then((res)=>{
+        //console.log(res);
+        let json = res.data;
+
+        json.forEach((el) => {
+            const $li = document.createElement("li");
+                $li.innerHTML = `<strong>NOMBRE:</strong> ${el.name} | 
+                <strong>EMAIL:</strong> ${el.email} | 
+                <strong>TELEFONO:</strong> ${el.phone}`;
+                $fragment.appendChild($li);
+        });
+
+        $axios.appendChild($fragment);
+    })
+    .catch((err)=>{
+        //console.log(err.response);
+        let message = err.response.statusText || "Ocurrió un error";
+        $axios.innerHTML = `Error ${err.response.status}: ${message}`;
+    })
+    .finally(()=>{
+        // console.log("Esto se ejecutará independientemente del resultado Axios");
+    });
 })();
 
 
