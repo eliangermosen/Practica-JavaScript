@@ -61,4 +61,58 @@
 
 })();
 
+//CAP 107. AJAX: API Fetch
+
+(()=>{
+    const $fetch = document.getElementById("fetch"),
+    $fragment = document.createDocumentFragment();
+
+    //then y catch vendrian siendo el if else de arriba
+    fetch("https://jsonplaceholder.typicode.com/users")
+    // fetch("assets/users.json")
+    /* .then((res) => {
+    //then manda una respuesta
+    console.log(res);
+    //operador ternario PARA VALIDACION DE ERROR
+    //si la respuesta en ok es true pasa al siguiente then y convierte a json
+    return res.ok ? res.json() : Promise.reject(res);
+    }) */
+    //en este then se transforma la respuesta
+    .then((res)=> (res.ok ? res.json() : Promise.reject(res)))
+    //en este la logica de programacion
+    .then((json) =>{
+        //recibe la respuesta de arriba
+        console.log(json);
+        // $fetch.innerHTML = json;
+        json.forEach(el => {
+                const $li = document.createElement("li");//creando li
+                $li.innerHTML = `<strong>NOMBRE:</strong> ${el.name} | 
+                <strong>EMAIL:</strong> ${el.email} | 
+                <strong>TELEFONO:</strong> ${el.phone}`;//agregandole los datos al li
+                $fragment.appendChild($li);//agregandole el li al fragmento
+            });
+
+            $fetch.appendChild($fragment);//agregando el fragmento al fetch
+    })
+    //el catch para error
+    .catch((err)=>{
+        //espera recibir error
+        console.log(err);
+        let message = err.statusText || "ocurrio un error";
+        $fetch.innerHTML = `ERROR ${err.status}: ${message}`;
+    })
+    //el finally
+    .finally(()=>{
+        //no importa el resultado se ejecutara
+        console.log("Esto se ejecutará independientemente del resultado de la Promesa Fetch");
+    
+    });
+})();
+
+//de esta manera con fetch la formula es la sgt. 
+//el primer then donde se transforma la respuesta
+//el segundo then donde se usa la logica de programacion
+//el catch para error
+//el finally opcional
+
 
