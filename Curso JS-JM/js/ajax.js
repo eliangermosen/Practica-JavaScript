@@ -162,6 +162,7 @@
 
     axios
     .get("https://jsonplaceholder.typicode.com/users")
+    // .get("assets/users.json")
     .then((res)=>{
         //console.log(res);
         let json = res.data;
@@ -186,5 +187,39 @@
     });
 })();
 
+//CAP 110. AJAX: Librería Axios + Async-Await
+
+(()=>{
+    const $axiosAsync = document.getElementById("axios-async"),
+    $fragment = document.createDocumentFragment();
+
+    async function getAxios(){
+        try{
+            let res = await axios.get("https://jsonplaceholder.typicode.com/users"),
+            // let res = await axios.get("assets/users.json"),
+            json = await res.data;
+
+            // console.log(res,json);
+            json.forEach((el) => {
+                const $li = document.createElement("li");
+                $li.innerHTML = `<strong>NOMBRE:</strong> ${el.name} | 
+                <strong>EMAIL:</strong> ${el.email} | 
+                <strong>TELEFONO:</strong> ${el.phone}`;
+                $fragment.appendChild($li);
+            });
+
+            $axiosAsync.appendChild($fragment);
+        }catch(err){
+            //console.log(err.response);
+            let message = err.response.statusText || "Ocurrió un error";
+            $axiosAsync.innerHTML = `Error ${err.response.status}: ${message}`;
+        }
+        finally{
+            // console.log("Esto se ejecutará independientemente del try... catch");
+        }
+    }
+
+    getAxios()
+})();
 
 
