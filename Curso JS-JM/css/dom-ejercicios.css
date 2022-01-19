@@ -1,0 +1,96 @@
+/* RESET CSS */
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* TODOS LOS DOCUMENTOS DEL DOM HEREDEN EL BOX SIZING */
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Responsive Slider */
+
+.slider {
+  position: relative;
+  width: 80%;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.slider-slides {
+  position: relative;
+  height: 400px;
+}
+
+.slider-slide {
+  /* este posicionamiento se hace respecto al primer elemento 
+    padre que encuentre en el dom relativo y si no encuentra 
+    un relativo se posiciona respecto del body*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease;
+}
+
+.slider-slide img {
+  /* hereda la altura y anchura en este caso seria 100%*/
+  /* esto hace que el slider sea responsive */
+  height: inherit;
+  width: inherit;
+  /* permite ajustar la proporcion de una imagen con 
+  respecto a su contenedor */
+  /* object-fit: contain; */
+  object-fit: cover;
+  object-position: 50% 0%;
+}
+
+.slider-slide.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.slider-btns {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  /* alinearlos en una fila */
+  display: flex;
+  /* el espacio sobrante lo reparte entre los elementos */
+  justify-content: space-between;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.slider a {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: thin solid #000;
+  text-decoration: none;
+  background-color: #fff;
+  color: #000;
+  transition: all 0.3s ease;
+}
+
+.slider a:hover {
+  color: #4d4d4d;
+}
