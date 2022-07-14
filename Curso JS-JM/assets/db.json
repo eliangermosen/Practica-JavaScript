@@ -29,6 +29,26 @@
       "id": 6,
       "nombre": "Saga",
       "constelacion": "Gemini"
+    },
+    {
+      "nombre": "Mu",
+      "constelacion": "Aries",
+      "id": 7
+    },
+    {
+      "nombre": "Aldebran",
+      "constelacion": "Tauro",
+      "id": 8
+    },
+    {
+      "nombre": "Sag",
+      "constelacion": "Gemin",
+      "id": 9
+    },
+    {
+      "nombre": "Manigoldo",
+      "constelacion": "Cancer",
+      "id": 10
     }
   ],
   "dioses": [

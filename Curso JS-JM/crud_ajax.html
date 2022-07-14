@@ -115,7 +115,66 @@
             })
         };
 
-        d.addEventListener("DOMContentLoaded", getAll)
+        d.addEventListener("DOMContentLoaded", getAll);
+
+        d.addEventListener("submit", e => {
+            if (e.target === $form) {
+                //previene el comportamiento por defecto que tiene el envio de un form (el envio de info)
+                e.preventDefault();
+
+                if (!e.target.id.value) {
+                    //CREATE post
+                    ajax({
+                        url: "http://localhost:3000/santos",
+                        method: "POST",
+                        success: (res) => location.reload(),
+                        error: () => $form.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`),
+                        data: {
+                            nombre: e.target.name.value,
+                            constelacion: e.target.constelacion.value
+                        }
+                    });
+                } else {
+                    //UPDATE put
+                    ajax({
+                        url: `http://localhost:3000/santos/${e.target.id.value}`,
+                        method: "PUT",
+                        success: (res) => location.reload(),
+                        error: () => $form.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`),
+                        data: {
+                            nombre: e.target.name.value,
+                            constelacion: e.target.constelacion.value
+                        }
+                    });
+                }
+            }
+        });
+
+        //e.target: ES EL OBJETO QUE ORIGINA EL EVENTO
+        d.addEventListener("click", e => {
+            if (e.target.matches(".edit")) {
+                // alert("PRESIONASTE EDITAR");
+                $title.textContent = "Editar Santo";
+                $form.name.value = e.target.dataset.name;
+                $form.constelacion.value = e.target.dataset.constellation;
+                $form.id.value = e.target.dataset.id;
+            }
+
+            if (e.target.matches(".delete")) {
+                let isDelete = confirm(`Estas seguro que deseas ELIMINAR el ${e.target.dataset.id}?`);
+
+                if (isDelete) {
+                    //DELETE
+                    ajax({
+                        url: `http://localhost:3000/santos/${e.target.dataset.id}`,
+                        method: "DELETE",
+                        success: (res) => location.reload(),
+                        error: () => alert(err)
+                    });
+                }
+            }
+        })
+
     </script>
 </body>
 
