@@ -49,6 +49,21 @@
       "nombre": "Manigoldo",
       "constelacion": "Cancer",
       "id": 10
+    },
+    {
+      "nombre": "Aioria",
+      "constelacion": "Leo",
+      "id": 11
+    },
+    {
+      "nombre": "Shaka",
+      "constelacion": "Virgo",
+      "id": 12
+    },
+    {
+      "nombre": "Dohko",
+      "constelacion": "Libra",
+      "id": 13
     }
   ],
   "dioses": [
