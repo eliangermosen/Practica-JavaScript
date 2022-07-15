@@ -57,11 +57,50 @@
             $table = d.querySelector(".crud-table"),
             $form = d.querySelector(".crud-form"),
             $title = d.querySelector(".crud-title"),
-            $template = d.getElementById(".crud-template").content,
+            $template = d.getElementById("crud-template").content,
             //no es ideal estar insertando al dom por cada elemento del API
             //POR LO QUE SE GUARADA TODO EN UN FRAGMENTO Y CUANDO SE
             //LLENE SE LE AGREGA
             $fragment = d.createDocumentFragment();
+
+        // async function getAll() {
+        const getAll = async () => {
+            try {
+                //establezco la peticion
+                let res = await fetch("http://localhost:3000/santos"),
+                    json = await res.json();//convierto la res a json
+                // console.log(res, json);
+
+                //si la respuesta viene false lanza un error
+                if (!res.ok) throw { status: res.status, statusText: res.statusText }
+
+                json.forEach(element => {
+                    $template.querySelector(".name").textContent = element.nombre;
+                    $template.querySelector(".constellation").textContent = element.constelacion;
+
+                    $template.querySelector(".edit").dataset.id = element.id;
+                    $template.querySelector(".edit").dataset.name = element.nombre;
+                    $template.querySelector(".edit").dataset.constellation = element.constelacion;
+                    $template.querySelector(".delete").dataset.id = element.id;
+
+                    let $clone = d.importNode($template, true);
+                    $fragment.appendChild($clone);
+                });
+
+                $table.querySelector("tbody").appendChild($fragment);
+
+            }
+            catch (err) {
+                let message = err.statusText || "Ocurrio un Error";
+                $table.insertAdjacentHTML("afterend", `<p><b>ERROR ${err}: ${message}</b></p>`);
+            }
+            finally {
+                console.log("siii!");
+            }
+        }
+
+        d.addEventListener("DOMContentLoaded", getAll);
+
     </script>
 </body>
 
