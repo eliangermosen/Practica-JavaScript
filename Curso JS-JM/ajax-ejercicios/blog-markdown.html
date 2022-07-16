@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog con Markdown & Showdown.js</title>
+</head>
+
+<body>
+    <h1>Blog con Markdown & Showdown.js</h1>
+    <main></main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+    <script>
+        const d = document,
+            $main = d.querySelector("main");
+
+        fetch("assets/javascript.md")
+            .then(res => res.ok ? res.text() : Promise.reject(res))
+            .then(text => {
+                console.log(text);
+                //$main.innerHTML = text;//pinta en texto plano
+                //este codigo de la libreria hace el cambio a html
+                $main.innerHTML = new showdown.Converter().makeHtml(text);
+            })
+            .catch(err => {
+                console.log(err);
+                let message = err.statusText || "Ocurrio un ERROR";
+                $main.innerHTML = `ERROR ${err.status}: ${message}`;
+            })
+    </script>
+</body>
+
+</html>
