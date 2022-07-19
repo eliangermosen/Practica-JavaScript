@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémons</title>
+    <style>
+        .loader {
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Pokémons</h1>
+    <nav class="links"></nav>
+    <main class="grid-fluid"></main>
+    <script>
+        const d = document,
+            $main = d.querySelector("main"),
+            $links = d.querySelector(".links");
+
+        let pokeApi = "https://pokeapi.co/api/v2/pokemon/";
+
+        async function loadPokemons(url) {
+            try {
+                $main.innerHTML = `<img class="loader" src="../assets/loader.svg" alt="Cargando...">`;
+
+                //esperara la respuesta que venga en la url
+                let res = await fetch(url),
+                    //convertirara la respuesta recibida a json
+                    json = await res.json(),
+                    $template = "",
+                    $prevLink,
+                    $nextLink;
+
+                console.log(json);
+
+                //si la respuesta da error lanza el estado
+                if (!res.ok) throw { status: res.status, statusText: res.statusText }
+
+                //for bloqueante
+                for (let i = 0; i < json.results.length; i++) {
+                    //imprime los primeros 20 pokemones que trae el api
+                    //console.log(json.results[i]);
+                    try {
+                        let res = await fetch(json.results[i].url),
+                            pokemon = await res.json();
+
+                        console.log(res, pokemon);
+
+                        if (!res.ok) throw { status: res.status, statusText: res.statusText };
+
+                        //si no hay ningun error el templetate se ira llenando con una figure por cada pokemon
+                        $template += `
+                        <figure>
+                            <img src="${pokemon.sprites.front_default}" alt="Imagen de ${pokemon.name}">   
+                            <figcaption>${pokemon.name}</figcaption>                
+                        </figure>
+                        `;
+                    } catch (err) {
+                        console.log(err);
+                        let message = err.statusText || "Ocurrio un ERROR";
+                        $template += `
+                        <figure>
+                            <figcaption>ERROR ${err.status}: ${err.message}</figcaption>
+                        </figure>
+                        `;
+                    }
+                }
+
+                //le agregamos el contenido a la etiqueta main
+                $main.innerHTML = $template;
+
+            } catch (err) {
+                console.log(err);
+                let message = err.statusText || "Ocurrio un ERROR";
+                $main.innerHTML = `ERROR ${err.status}: ${message}`;
+            }
+        }
+
+        //se ejecutara a la carga del DOM
+        d.addEventListener("DOMContentLoaded", e => loadPokemons(pokeApi));
+    </script>
+</body>
+
+</html>
