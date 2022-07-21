@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador Shows de TV</title>
+    <style>
+        .loader {
+            display: block;
+            margin: auto;
+        }
+
+        .grid-fluid {
+            display: grid;
+            /* auto-fit: significa una por cada elemento hijo del componente grid
+                es decir una por cada elemento figure que genere*/
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            /* text-align: center; */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Buscador Shows de TV</h1>
+    <input type="search" name="" id="search" placeholder="Buscar Shows de TV..." autocomplete="off">
+    <section id="shows" class="grid-fluid"></section>
+    <template id="show-template">
+        <article class="show">
+            <h3></h3>
+            <div></div>
+            <img>
+            <a></a>
+        </article>
+    </template>
+
+    <script>
+        const d = document,
+            $shows = d.getElementById("shows"),
+            $template = d.getElementById("show-template").content
+        $fragment = d.createDocumentFragment();
+
+        //cuando el usuario presione la tecla enter
+        d.addEventListener("keypress", async e => {
+            if (e.target.matches("#search")) {
+                //console.log(e.key, e.keyCode);
+                //e.key === "Enter"
+                if (e.keyCode === 13) {
+                    try {
+                        $shows.innerHTML = `<img class="loader" src="../assets/loader.svg" alt="Cargando...">`;
+
+                        //el evento es generado por el input y forzamos a que 
+                        //lo que sea que escriba el usuario sea enviado en minusculas
+                        let query = e.target.value.toLowerCase(),
+                            api = `https://api.tvmaze.com/search/shows?q=${query}`,
+                            res = await fetch(api),
+                            json = await res.json();
+
+                        console.log(api, res, json);
+
+                        //si el parametro ok de la respuesta es falsa lanza el objeto
+                        if (!res.ok) throw { status: res.status, statusText: res.statusText }
+
+                        if (json.length === 0) {
+                            $shows.innerHTML = `<h2>No existen resultados de shows para el criterio de busqueda <mark>${query}</mark></h2>`;
+                        } else {
+                            json.forEach(el => {
+                                // dentro del template busca el h3 y en el textContent pon el nombre del show
+                                $template.querySelector("h3").textContent = el.show.name;
+                                //el summary como viene en HTML se le agrega 
+                                $template.querySelector("div").innerHTML = el.show.summary ? el.show.summary : "Sin descripcion";
+                                $template.querySelector("img").src = el.show.image ? el.show.image.medium : "http://static.tvmaze.com/images/no-img/no-img-portrait-text.png";
+                                $template.querySelector("img").alt = el.show.name;
+
+                                //le agregamos estilos mediante JS a la imagen aunque esta no es la forma mas idonea
+                                $template.querySelector("img").styleMaxWidth = "100%";
+                                $template.querySelector("a").href = el.show.url ? el.show.url : "#";
+                                //abre nueva pestana si no viene nada se queda en la pagina
+                                $template.querySelector("a").target = el.show.url ? "_blank" : "_self";
+                                $template.querySelector("a").textContent = el.show.url ? "Ver mas..." : "";
+
+                                //importo el nodo template y el true es para que copie la estructura completa del template
+                                let $clone = d.importNode($template, true);
+
+                                //agregamos como hijo al clon
+                                $fragment.appendChild($clone);
+                            });
+
+                            //antes de agregar el resultado 
+                            $shows.innerHTML = "";
+                            //apendchild agrega despues del ultimo elemento
+                            $shows.appendChild($fragment);
+                        }
+                    } catch (err) {
+                        console.log(err);
+                        let message = err.statusText || "Ocurrio un Error";
+                        $shows.innerHTML = `<p>Error ${err.status}: ${message}</p>`;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
